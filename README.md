@@ -29,3 +29,6 @@ Interactive
 ```bash
 python -m convbot
 ```
+## Not tested in Windows 10
+
+The module uses pytorch that is installed differently in Windows than in Linux. To run in Windows, you can probably just try to install pytorch manually.
