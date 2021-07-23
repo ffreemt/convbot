@@ -13,12 +13,12 @@ model = AutoModelForCausalLM.from_pretrained(model_name)
 
 
 def _convbot(
-        text: str,
-        max_length: int = 1000,
-        do_sample: bool = True,
-        top_p: float = 0.95,
-        top_k: int = 0,
-        temperature: float = 0.75,
+    text: str,
+    max_length: int = 1000,
+    do_sample: bool = True,
+    top_p: float = 0.95,
+    top_k: int = 0,
+    temperature: float = 0.75,
 ) -> str:
     """Generate a reponse.
 
@@ -40,7 +40,7 @@ def _convbot(
 
     input_ids = tokenizer.encode(text + tokenizer.eos_token, return_tensors="pt")
     if chat_history_ids:
-        bot_input_ids = torch.cat([chat_history_ids,  input_ids], dim=-1)
+        bot_input_ids = torch.cat([chat_history_ids, input_ids], dim=-1)
     else:
         bot_input_ids = input_ids
 
@@ -52,27 +52,29 @@ def _convbot(
         top_p=top_p,
         top_k=top_k,
         temperature=temperature,
-        pad_token_id=tokenizer.eos_token_id
+        pad_token_id=tokenizer.eos_token_id,
     )
 
-    output = tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
+    output = tokenizer.decode(
+        chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True
+    )
     _convbot.chat_history_ids = chat_history_ids
 
     return output
 
 
 def convbot(
-        text: str,
-        n_reties: int = 3,
-        max_length: int = 1000,
-        do_sample: bool = True,
-        top_p: float = 0.95,
-        top_k: int = 0,
-        temperature: float = 0.75,
+    text: str,
+    n_retries: int = 3,
+    max_length: int = 1000,
+    do_sample: bool = True,
+    top_p: float = 0.95,
+    top_k: int = 0,
+    temperature: float = 0.75,
 ) -> str:
     """Generate a response."""
     try:
-        n_reties = int(n_reties)
+        n_retries = int(n_retries)
     except Exception as e:
         logger.error(e)
         raise
@@ -81,27 +83,27 @@ def convbot(
     except AttributeError:
         prev_resp = ""
 
-    resp = _convbot(text, max_length, top_p, top_p, temperature)
-    
-    # retry n_retires if resp is empty
+    resp = _convbot(text, max_length, do_sample, top_p, top_k, temperature)
+
+    # retry n_retries if resp is empty
     if not resp.strip():
         idx = 0
-        while idx < n_retires:
+        while idx < n_retries:
             idx += 1
             _convbot.chat_history_ids = ""
-            resp = _convbot(text, max_length, top_p, top_p, temperature)
+            resp = _convbot(text, max_length, do_sample, top_p, top_k, temperature)
             if resp.strip():
                 break
         else:
             logger.warning("bot acting up (empty response), something has gone awry")
-    
+
     # check repeated responses
-    if resp.strip() == convbot.prev_resp:
+    if resp.strip() == prev_resp:
         idx = 0
-        while idx < n_retires:
+        while idx < n_retries:
             idx += 1
-            resp = _convbot(text, max_length, top_p, top_p, temperature)
-            if resp.strip() != convbot.prev_resp: 
+            resp = _convbot(text, max_length, do_sample, top_p, top_k, temperature)
+            if resp.strip() != prev_resp:
                 break
         else:
             logger.warning("bot acting up (repeating), something has gone awry")
@@ -112,7 +114,7 @@ def convbot(
 
 
 def main():
-    print("Talk to me")
+    print("Bot: Talk to me")
     while 1:
         text = input("You: ")
         resp = _convbot(text)
@@ -121,4 +123,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

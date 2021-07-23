@@ -20,7 +20,12 @@ pip install convbot -U
 ```python
 from convbot import convbot
 
-convertbot("How are you?")
+prin(convertbot("How are you?"))
 # I am good  # or along that line
+```
 
+Interactive
+
+```bash
+python -m convbot
 ```
