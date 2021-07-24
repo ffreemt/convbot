@@ -22,7 +22,9 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install packages
-        run: poetry install  # --no-dev
+        run: |
+          poetry update  # sync lock file
+          poetry install  # --no-dev
       - name: Run flake8
         run: |
           poetry run flake8 --exit-zero
