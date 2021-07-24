@@ -126,7 +126,7 @@ def aconvbot(
     temperature: float = 0.75,
 ) -> str:
     try:
-        _ = convbot(text,n_retries, max_length, do_sample, top_p, top_k, temperature)
+        _ = convbot(text, n_retries, max_length, do_sample, top_p, top_k, temperature)
     except Exception as e:
         logger.error(e)
         raise
