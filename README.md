@@ -24,7 +24,7 @@ prin(convertbot("How are you?"))
 # I am good  # or along that line
 ```
 
-The async version `aconvbot`, potentialy for `fastapi` or `Nonebot` plugins and such,  is rather artificial since it's based on `ThreadPoolExecutor`. Hence it's not intended for production. You probably should not spawn too many instances.
+The async version `aconvbot`, potentially for `fastapi` or `Nonebot` plugins and such,  is rather artificial since it's based on `ThreadPoolExecutor`. Hence it's not intended for production. You probably should not spawn too many instances.
 ```python
 from convbot import aconvbot
 
@@ -38,6 +38,17 @@ Interactive
 ```bash
 python -m convbot
 ```
+
+    2021-07-24 03:11:19.748518: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+    Bot: Talk to me (type quit to exit)
+    You: How are you?
+    Bot:  I'm good, you?
+    You: pretty good. how is the weather there?
+    Bot:  It's pretty cold.
+    You: really?
+    Bot:  I don't have a heat source.
+    You:
+
 ## Not tested in Windows 10 and Mac
 
 The module uses pytorch that is installed differently in Windows than in Linux. To run `convbot` in Windows or Mac, you may give it a spin  by cloning the repo (git clone [https://github.com/ffreemt/convbot](https://github.com/ffreemt/convbot)) and installing pytorch manually.
