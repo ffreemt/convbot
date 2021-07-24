@@ -3,6 +3,8 @@
 
 A conversational bot based on huggingface transformers
 
+Try it out [![Open convbot-demo.ipynb In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ffreemt/convbot/blob/master/convbot_demo.ipynb)
+
 ## Install it
 
 ```shell
@@ -48,6 +50,10 @@ python -m convbot
     You: really?
     Bot:  I don't have a heat source.
     You:
+
+## Colab testrun `convbot-demo.ipynb`
+
+[![Open convbot-demo.ipynb In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ffreemt/convbot/blob/master/convbot_demo.ipynb)
 
 ## Not tested in Windows 10 and Mac
 
