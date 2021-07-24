@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import functools
 
+
 def force_async(func):
     """Turn a sync func to async.
 
