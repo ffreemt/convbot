@@ -4,6 +4,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 from logzero import logger
 
+from .force_async import force_async
+
 # model_name = "microsoft/DialoGPT-large"
 # model_name = "microsoft/DialoGPT-small"
 # pylint: disable=invalid-name
@@ -39,7 +41,7 @@ def _convbot(
         chat_history_ids = ""
 
     input_ids = tokenizer.encode(text + tokenizer.eos_token, return_tensors="pt")
-    if chat_history_ids:
+    if isinstance(chat_history_ids, torch.Tensor):
         bot_input_ids = torch.cat([chat_history_ids, input_ids], dim=-1)
     else:
         bot_input_ids = input_ids
@@ -111,6 +113,24 @@ def convbot(
     convbot.prev_resp = resp
 
     return resp
+
+
+@force_async
+def aconvbot(
+    text: str,
+    n_retries: int = 3,
+    max_length: int = 1000,
+    do_sample: bool = True,
+    top_p: float = 0.95,
+    top_k: int = 0,
+    temperature: float = 0.75,
+) -> str:
+    try:
+        _ = convbot(text,n_retries, max_length, do_sample, top_p, top_k, temperature)
+    except Exception as e:
+        logger.error(e)
+        raise
+    return _
 
 
 def main():

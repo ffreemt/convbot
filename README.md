@@ -24,6 +24,15 @@ prin(convertbot("How are you?"))
 # I am good  # or along that line
 ```
 
+The async version `aconvbot`, potentialy for `fastapi` or `Nonebot` plugins and such,  is rather artificial since it's based on `ThreadPoolExecutor`. Hence it's not intended for production. You probably should not spawn too many instances.
+```python
+from convbot import aconvbot
+
+async def afunc(text):
+    resp = await aconvbot(text)
+    ...
+```
+
 Interactive
 
 ```bash
@@ -31,4 +40,4 @@ python -m convbot
 ```
 ## Not tested in Windows 10 and Mac
 
-The module uses pytorch that is installed differently in Windows than in Linux. To run in Windows or Mac, you can probably just try to install pytorch manually.
+The module uses pytorch that is installed differently in Windows than in Linux. To run `convbot` in Windows or Mac, you may give it a spin  by cloning the repo (git clone [https://github.com/ffreemt/convbot](https://github.com/ffreemt/convbot)) and installing pytorch manually.
