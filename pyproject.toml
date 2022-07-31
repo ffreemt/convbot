@@ -14,6 +14,7 @@ python = "^3.7"
 logzero = "^1.7.0"
 transformers = "^4.9.0"
 torch = {version = "^1.9.0", python = "^3.7", platform = "linux"}
+gradio = "^3.1.1"
 
 [tool.poe.executor]
 type = "poetry"
