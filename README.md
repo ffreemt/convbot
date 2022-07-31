@@ -10,4 +10,4 @@ pinned: false
 license: mit
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+[github readme1.md](https://github.com/ffreemt/convbot/blob/main/README1.md)

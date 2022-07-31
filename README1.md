@@ -3,8 +3,6 @@
 
 A conversational bot based on microsoft/DialoGPT-medium
 
-Try it out [![Open convbot-demo.ipynb In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ffreemt/convbot/blob/master/convbot_demo.ipynb)
-
 ## Install it
 
 ```shell
@@ -17,6 +15,15 @@ pip install convbot
 pip install convbot -U
 # or poetry add convbot@latest
 ```
+
+## Demo via Gradio
+```bash
+python app.py
+```
+will start a web interface, as shown at
+[https://huggingface.co/spaces/mikeee/convbot](https://huggingface.co/spaces/mikeee/convbot)
+
+
 
 ## Use it
 ```python
