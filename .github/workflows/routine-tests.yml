@@ -23,7 +23,8 @@ jobs:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install packages
         run: |
-          poetry update  # sync lock file
+          # poetry update  # sync lock file
+          poetry lock --no-update  # sync lock file
           poetry install  # --no-dev
       - name: Run flake8
         run: |
