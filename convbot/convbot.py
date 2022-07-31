@@ -1,8 +1,8 @@
 """Generate a response."""
 # pylint:disable=line-too-long, too-many-argument
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 from logzero import logger
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .force_async import force_async
 
@@ -58,7 +58,7 @@ def _convbot(
     )
 
     output = tokenizer.decode(
-        chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True
+        chat_history_ids[:, bot_input_ids.shape[-1] :][0], skip_special_tokens=True
     )
     _convbot.chat_history_ids = chat_history_ids
 

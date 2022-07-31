@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "convbot"
 version = "0.1.1"
-description = "pack_name descr "
+description = "A conversational bot based on huggingface transformers"
 authors = ["ffreemt"]
 license = "MIT"
-readme = "README.md"
+readme = "README1.md"
 repository = "https://github.com/ffreemt/convbot"
 include = ["LICENSE"]
 
@@ -26,6 +26,7 @@ release = ["test", "build", "_publish"]
 lint = { cmd = "pylint convbot" }
 format = "black tests convbot"
 tunnel = {cmd ="ssh -CN ip_or_hostname_defined_in_hosts -L 9091:127.0.0.1:9091"}
+export = "poetry export --without-hashes -f requirements.txt -o requirements.txt"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
