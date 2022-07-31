@@ -20,7 +20,7 @@ tokenizers==0.10.3; python_full_version >= "3.6.0"
 --find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.7.1+cpu
 tqdm==4.61.2; python_full_version >= "3.6.0"
-transformers==4.9.0; python_full_version >= "3.6.0"
+transformers
 typing-extensions==3.10.0.0; python_version >= "3.7" and python_version < "3.8" and sys_platform == "linux" and python_full_version >= "3.6.2"
 urllib3==1.26.6; python_full_version >= "3.6.0" and python_version < "4"
 zipp==3.5.0; python_version < "3.8" and python_full_version >= "3.6.0" and python_version >= "3.6"
