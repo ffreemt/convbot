@@ -1,3 +1,4 @@
+gradio
 certifi==2021.5.30; python_full_version >= "3.6.0"
 charset-normalizer==2.0.3; python_version >= "3" and python_full_version >= "3.6.0"
 click==8.0.1; python_version >= "3.6" and python_full_version >= "3.6.0"

@@ -24,11 +24,16 @@ jobs:
       - name: Install packages
         run: |
           # poetry update  # sync lock file
-          poetry lock --no-update  # sync lock file
-          poetry install  # --no-dev
+          # poetry lock --no-update  # sync lock file
+          # poetry install  # --no-dev
+          pip install -r requirements.txt
+          pip install flake8 pytest pytest-asyncio
       - name: Run flake8
         run: |
-          poetry run flake8 --exit-zero
+          # poetry run flake8 --exit-zero
           # poetry run pytest
+          flake8 --exit-zero
       - name: Run pytest
-        run: poetry run pytest
+        run: |
+          # poetry run pytest
+          pytest tests
